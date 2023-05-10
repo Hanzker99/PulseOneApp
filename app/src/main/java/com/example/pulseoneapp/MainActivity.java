@@ -1,8 +1,8 @@
 package com.example.pulseoneapp;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,26 +17,28 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView username =(TextView) findViewById(R.id.username);
-        TextView password =(TextView) findViewById(R.id.password);
+        TextView username = findViewById(R.id.username);
+        TextView password = findViewById(R.id.password);
 
-        MaterialButton loginbtn =(MaterialButton) findViewById(R.id.loginbtn);
+        MaterialButton loginbtn = findViewById(R.id.loginbtn);
 
         //admin
-        loginbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(username.getText().toString().equals("admin") && password.getText().toString().equals("admin")) {
-                    //corect
-                    Toast.makeText(MainActivity.this, "Login", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(MainActivity.this, SeocndActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
-                } else 
-                    //incorect
-                    Toast.makeText(MainActivity.this, "Not login", Toast.LENGTH_SHORT).show();
+        loginbtn.setOnClickListener(v -> {
+            if(username.getText().toString().equals("admin") && password.getText().toString().equals("admin")) {
+                //correct
+                Toast.makeText(MainActivity.this, "Login", Toast.LENGTH_SHORT).show();
+            } else {
+                //incorrect
+                Toast.makeText(MainActivity.this, "Not login", Toast.LENGTH_SHORT).show();
             }
         });
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.user_menu, menu);
+        return true;
     }
 }

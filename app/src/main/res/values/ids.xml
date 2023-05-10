@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="greeting" type="id" />
+    <item name="menuName" type="id" />
+    <item name="menuEnvironment" type="id" />
+</resources>
